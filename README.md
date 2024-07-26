@@ -19,8 +19,11 @@ This Starter is **heavily** inspired by [Lee Robinson](https://github.com/leerob
 ```bash
 git clone https://github.com/ChangoMan/nextjs-mdx-blog.git
 cd nextjs-typescript-mdx-blog
-
-npm install
+npm cache clean --force
+删除node-modle
+npm install，重新安装
+然后编译npm run build
+然后运行
 
 npm run dev
 ```
