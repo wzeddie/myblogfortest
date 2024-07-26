@@ -1,6 +1,9 @@
 # NextJS - MDX - shadcn-ui - Tailwind - Blog
 
 添加login
+为什么vercel无法部署
+npm run dev可以运行
+next build 则提示不行
 
 ## Getting Started
 
