@@ -3,6 +3,14 @@ title: python for poker algorithm
 description: Playing cards shuffle, card dealing algorithm sharing
 date: 2024-08-03
 ---
+<Image
+  alt={`Bridge`}
+  src={`/images/cards-4425762_1280.jpg`}
+  width={1440}
+  height={960}
+  priority
+/>
+
 # Master Python for Poker Algorithm: Shuffle and Deal Like a Pro
 Unlock the secrets of Python for poker algorithms, focusing on playing card shuffling and efficient card dealing techniques. Learn how to enhance your poker game with innovative coding.
 
@@ -53,8 +61,14 @@ for i, hand in enumerate(hands):
     print(f"Player {i+1} hand: {', '.join(repr(card) for card in hand)}")
 ```
 
-## Heading H2
+## Experience
 
-That's what it said on 'Ask Jeeves.' That's what it said on 'Ask Jeeves.' Across from where? That's why you always leave a note! I hear the jury's still out on science.
+This segment of code first defines the Card class and the Deck class. The Card class is used to create poker card objects, while the Deck class is used to create a deck of cards and provides methods for shuffling and dealing cards.
 
-I hear the jury's still out on science. I hear the jury's still out on science. No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide.
+The __repr__ method of the Card class defines how to print Card objects, making them easy to read.
+
+The shuffle method of the Deck class uses Python's random.shuffle function to randomly shuffle the cards in the deck.
+
+The deal method distributes cards from the deck to a specified number of players, with each player receiving a specified number of cards. Cards are taken from the end of the deck using the pop method, ensuring that cards are not reused.
+
+Please note that this example code is a simple demonstration, and actual poker games may require more complex logic, such as handling jokers, cards of various suits, scoring, and game rules, etc.
