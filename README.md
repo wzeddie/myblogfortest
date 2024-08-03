@@ -1,12 +1,17 @@
-# NextJS - MDX - shadcn-ui - Tailwind - Blog
+# 待解决问题
+为什么vercel dev能部署，推送到服务器上就不行了，vercel无法部署
+ 
+# 项目框架
+github 对应仓库，/wzeddie/myblogfortest，branch为testforlogin
+技术栈，NextJS - MDX - shadcn-ui - Tailwind - Blog
+本地文件夹，git_home/nextjs-mdx-blog
+# 需求优化
+1、添加文章，在posts文件中添加mdx格式的blog文章。
 
-添加login
-为什么vercel无法部署
-npm run dev可以运行
-next build 则提示不行
-
-# 添加文章，然后部署到vercel上
-
+# 如何启动
+2、安装vercel
+3、开发环境运行，vercel dev
+4、生成环境部署，npm run build 编译代码，vercel --prod，部署wzeddie.online 
 ## Getting Started
 
 ```bash
