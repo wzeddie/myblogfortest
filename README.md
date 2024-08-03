@@ -5,6 +5,8 @@
 npm run dev可以运行
 next build 则提示不行
 
+# 添加文章，然后部署到vercel上
+
 ## Getting Started
 
 ```bash
