@@ -62,7 +62,12 @@ for i, hand in enumerate(hands):
 ```
 
 ## Experience
+这段代码首先定义了 Card 类和 Deck 类。Card 类用于创建扑克牌对象，而 Deck 类用于创建一副牌，并提供了洗牌和发牌的方法。
 
+Card 类的 __repr__ 方法定义了如何打印 Card 对象，使其易于阅读。
+Deck 类的 shuffle 方法使用 Python 的 random.shuffle 函数来随机打乱牌组中的牌。
+deal 方法从牌组中分发牌给指定数量的玩家，每个玩家获得指定数量的牌。牌是通过 pop 方法从牌组的末尾取出的，这样牌就不会被重复使用。
+请注意，这个示例代码是一个简单的演示，实际的扑克游戏可能需要更复杂的逻辑，比如处理大小王、多种花色的牌、得分和游戏规则等。
 This segment of code first defines the Card class and the Deck class. The Card class is used to create poker card objects, while the Deck class is used to create a deck of cards and provides methods for shuffling and dealing cards.
 
 The __repr__ method of the Card class defines how to print Card objects, making them easy to read.
