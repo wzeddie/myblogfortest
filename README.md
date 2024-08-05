@@ -1,6 +1,7 @@
 # 待解决问题
 为什么vercel dev能部署，推送到服务器上就不行了，vercel无法部署
- 
+——解决办法，因为clock原来为html框架，所以需要修改服务器为编译框架为next.js，然后编译命令为npm run build，重新构建环境。
+
 # 项目框架
 github 对应仓库，/wzeddie/myblogfortest，branch为testforlogin
 技术栈，NextJS - MDX - shadcn-ui - Tailwind - Blog
