@@ -62,7 +62,25 @@ for i, hand in enumerate(hands):
 ```
 ```python
 
+import random
+listcard=[1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13,'s','w']
+random.shuffle(listcard)
+print('listcard',listcard)
+plarys=[]
+for i in range(3):
+    plary=[]
+    for j in range(18):
+        plary.append(listcard.pop())
+    print('plary',plary)
+    plary.sort(key=str)
+    print('plary',plary)
+    plarys.append(plary)
 
+print('plarys',plarys)
+
+#plary [1, 10, 8, 13, 5, 5, 4, 11, 6, 3, 3, 5, 13, 9, 4, 5, 6, 3]
+#plary [12, 9, 10, 2, 3, 2, 8, 12, 'w', 11, 1, 7, 10, 1, 11, 7, 13, 12]
+#plary [9, 11, 's', 8, 4, 10, 7, 6, 4, 12, 7, 8, 1, 13, 9, 2, 2, 6]
 
 ```
 

@@ -219,3 +219,28 @@ input[type='email'] {
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-t-none border-t-0;
 }
+@media print {
+  body {
+    padding: 20px;
+  }
+  .markdown-body {
+    line-height: 1.5;
+  }
+}
+
+.snowfall {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.snowfall-bar {
+  flex-basis: 0;
+  flex-grow: 1;
+  margin: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 10px;
+  color: #eff6ff;
+}  
