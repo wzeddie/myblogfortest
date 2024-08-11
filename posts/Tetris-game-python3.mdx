@@ -1,0 +1,86 @@
+---
+title: Developing a Tetris game with python（三）
+description: Developing a Tetris game involves several data structures and algorithms，开发一个俄罗斯方块游戏，主要会涉及哪些数据结构和算法
+date: 2024-08-08
+---
+<Image
+  alt={`Tetris`}
+  src={`/images/cube-1678974_1280.png`}
+  width={1440}
+  height={960}
+  priority
+/>
+开发一个俄罗斯方块游戏，主要会涉及到的算法.
+
+##算法（二）——接收用户操作输入
+
+3、接收用户操作输入
+
+```python
+#主循环
+try:
+    while True:
+            #pprint.pprint(listcard,width=50)
+            if input("输入'a'来旋转90°: ").lower() == 'a':#判断用户输入的键是否为a
+                chang_90()#旋转方块
+主循环的跳出ctrl +c#
+except KeyboardInterrupt:
+    print("程序被用户中断。")
+
+```
+这种做法会导致界面上会被强制中断，等待用户输入，不符需求。
+实际的需求是界面一直刷新，同时判断用户是否操作输入。
+一般这种解法方法是采用多线程的方式，也就是主程序执行图像不停的刷新，另一个线程执行接收用户请求输入。
+
+```python
+import threading
+
+# 全局变量用于捕获用户输入
+user_input = None
+def get_input():
+    global user_input
+    while True:
+        user_input = input()
+# 启动线程处理用户输入
+input_thread = threading.Thread(target=get_input)
+input_thread.daemon = True  # 守护线程
+input_thread.start()
+```
+>bug解决
+
+上面这个方面获取按钮a，比如按回车才可以？？
+————在 Python 中，标准的 input() 函数会等待用户按下回车键来捕获输入。
+
+>解决方法一：引入外部库keyboard 
+```python
+pip install keyboard 
+import keyboard  # 需要安装keyboard库
+if keyboard.is_pressed('a'):  # 检测是否按下了'a'键
+```
+
+>解决方法二：使用一些低级别的函数（如 Windows 上的 msvcrt 或 Unix 系统上的 termios 和 tty）
+```python
+import msvcrt
+
+# 全局变量用于捕获用户输入
+user_input = None#初始化一个全局变量
+def get_input():
+    global user_input
+    while True:
+        if msvcrt.kbhit():
+            user_input = msvcrt.getch()
+            user_input = user_input.decode()  # 将字节类型转换为字符串
+            print(f'You pressed: {user_input}.lower() ')
+
+#...省略
+try:
+    while True:
+            time.sleep(2)
+            pprint.pprint(listcard,width=50)
+            if user_input:#先判定是否非None，否则无法获取属性.lower
+                if user_input.lower()  == 'a':
+                    chang_90()
+                    break
+
+
+```

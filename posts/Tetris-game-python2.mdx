@@ -1,0 +1,162 @@
+---
+title: Developing a Tetris game with python（二）
+description: Developing a Tetris game involves several data structures and algorithms，开发一个俄罗斯方块游戏，主要会涉及哪些数据结构和算法
+date: 2024-08-08
+---
+<Image
+  alt={`Bridge`}
+  src={`/images/cube-1678974_1280.png`}
+  width={1440}
+  height={960}
+  priority
+/>
+开发一个俄罗斯方块游戏，主要会涉及到的算法.
+
+
+## 算法（一）
+1、方块生成（Piece Generation）：
+随机生成新的方块，通常使用随机算法从预定义的方块类型中选择一个。
+
+```python
+import pprint
+import random
+# 随机选择一个形状
+selected_shape = random.choice(list(shapes.values()))
+pprint.pprint(selected_shape,width=50)
+```
+
+
+2、方块下落（Gravity）：
+每隔一段时间，当前方块会自动向下移动一格。如果到达底部或与其他方块发生碰撞，则固定方块，并生成一个新的方块。
+
+```python
+import time
+import random
+
+# 定义一个形状字典
+shapes = {
+    'I': [[1, 1, 1, 1]],
+    'O': [[1, 1],
+          [1, 1]],
+    'T': [[0, 1, 0],
+          [1, 1, 1]],
+    'L': [[1, 0],
+          [1, 0],
+          [1, 1]],
+    'J': [[0, 1],
+          [0, 1],
+          [1, 1]]
+}
+
+def move_down(grid, shape, shape_x, shape_y, start_row, start_col):
+    new_grid = [row[:] for row in grid]  # 创建网格的副本
+    moved = True  # 默认可以下落
+
+    # 尝试将形状向下移动一行
+    for i in range(shape_x):
+        for j in range(shape_y):
+            if shape[i][j] != 0:
+                # 检查新位置是否超出网格底部或与已有方块发生碰撞
+                if (start_row + i + 1 >= len(grid)) or (new_grid[start_row + i + 1][start_col + j] != 0):
+                    moved = False
+                    break
+        if not moved:
+            break
+
+    if moved:
+        # 清除原始位置
+        for i in range(shape_x):
+            for j in range(shape_y):
+                if shape[i][j] != 0:
+                    grid[start_row + i][start_col + j] = 0
+        
+        # 更新新位置
+        for i in range(shape_x):
+            for j in range(shape_y):
+                if shape[i][j] != 0:
+                    grid[start_row + i + 1][start_col + j] = shape[i][j]
+        
+        start_row += 1
+
+    return moved, start_row
+
+# 初始化一个10x10的网格
+grid_size = 10
+grid = [[0] * grid_size for _ in range(grid_size)]
+
+# 随机选择一个形状
+shape_key = random.choice(list(shapes.keys()))
+shape = shapes[shape_key]
+
+# 确定方块的起始位置，这里以网格顶部中心为例
+start_x = (grid_size - len(shape[0])) // 2  # 水平居中
+start_y = 0  # 从顶部开始
+
+# 将方块放置到网格中
+for i, row in enumerate(shape):
+    for j, cell in enumerate(row):
+        if cell:  # 只有当单元格值为1时，才在网格中放置
+            grid[start_y + i][start_x + j] = 1
+
+# 打印包含方块的网格
+def print_grid(grid):
+    for row in grid:
+        print(' '.join(str(cell) for cell in row))
+    print("\n")
+
+# 主循环
+try:
+    while True:
+        print_grid(grid)  # 打印当前网格状态
+        moved, start_y = move_down(grid, shape, len(shape), len(shape[0]), start_y, start_x)  # 传入正确的参数
+        if not moved:
+            print("方块已固定或到达底部。")
+            break  # 退出循环
+        time.sleep(1)  # 等待1秒，模拟下落速度
+except KeyboardInterrupt:
+    print("程序被用户中断。")
+```
+
+
+3、方块旋转（Rotation）：
+矩阵旋转：通过对方块形状的二维列表进行矩阵旋转（顺时针或逆时针）来实现方块的旋转。
+
+```python
+#-*coding:gb2312-*-
+#支持中文注释
+
+import pprint
+# 初始二维列表4x4，默认一个类型方块
+listcard=[
+ [1, 1, 1, 0],
+ [0, 1, 0, 0],
+ [0, 0, 0, 0],
+ [0, 0, 0, 0]]
+#初始一个新的二维列表，空的方块
+new_listcard=[
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0],
+[0,0,0,0]
+]
+
+#获取原列表长度
+size=len(listcard)
+#也可以根据原列表，创建一个新的列表
+#new_listcard=[[0]*size for _ in reange(size)]
+#打印原列表
+pprint.pprint(listcard,width=50)
+for i in range(size):
+    #print('line',i)
+    for j in range(size):
+        #print(listcard[i][j])
+        #顺时选择90°添加到新的列表
+        new_listcard[j][size-1-i]=listcard[i][j]
+        #（原列表的列j是新列表的行，原列表的行i是新列表的列max-i，max=size-1，索引原因.）
+        #pprint.pprint(new_listcard,width=50)
+#打印新列表        
+pprint.pprint(new_listcard,width=50)
+
+
+```
+
