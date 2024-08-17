@@ -13,12 +13,21 @@ export default function Home() {
   return (
     <div>
       <div className="space-y-7">
-        <h1>Home Page</h1>
+        <h1>Home Page </h1>
+        <h2>Why you should write
+        </h2>
+
         <p>
-          Next.js starter template for your next blog or personal site. Built
-          with:
+        Look, I’m not a scientist, so I can’t present you with a study on what writing does for your health, or the benefits for your brain, or how you’ll look 25 years younger.
         </p>
-        <ul className="my-6 list-disc space-y-2 pl-4">
+
+        <p>
+        But here’s what I do know: writing helps you get better. It ensures that you really get to know the topic as well as you thought you did. It helps formalize thoughts. It improves your ability to structure, organize, and create hierarchy. It makes you a better storyteller. It can help to bolster your public image with thought leadership. It educates. It creates discussion, introduces you to new points of view.  
+        </p>
+        <p>
+        And, it’s cathartic. Dang. Coffee and a keyboard? Pretty great morning if you ask me. 
+        </p>
+        {/* <ul className="my-6 list-disc space-y-2 pl-4">
           <li>
             <Link className="link" href="https://nextjs.org/docs/app">
               Next.js - App Router
@@ -44,13 +53,13 @@ export default function Home() {
               Tailwind CSS
             </Link>
           </li>
-        </ul>
+        </ul> */}
 
-        <Button asChild>
+        {/* <Button asChild>
           <a href="https://github.com/ChangoMan/nextjs-mdx-blog">
             <Github className="mr-1" /> Get the source code!
           </a>
-        </Button>
+        </Button> */}
       </div>
 
       <div className="mt-16">

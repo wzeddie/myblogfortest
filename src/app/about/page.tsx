@@ -28,7 +28,11 @@ export default function About() {
   return (
     <div className="space-y-7">
       <h1>About</h1>
-      <p>Welcome to the about page</p>
-    </div>
+      <p>
+        Hi! I’m eddie, and I help make the internet.
+        I had a pretty early start on this web stuff – I still remember the modem connection sounds of AOL 2.5 emanating from my eMachines desktop like it was yesterday.
+        </p>  
+          
+        </div>
   )
 }

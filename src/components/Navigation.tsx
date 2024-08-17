@@ -9,6 +9,9 @@ export function Navigation() {
       <Link href="/about" className="nav-link">
         About
       </Link>
+      <Link href="https://www.lean-domain.online/" className="nav-link">
+        LeanDomain
+      </Link>
     </nav>
   )
 }
