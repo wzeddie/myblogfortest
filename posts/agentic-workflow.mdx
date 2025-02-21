@@ -1,0 +1,86 @@
+---
+title: Agentic WorkFlow 
+description: 概念，有哪些主流框架，如何使用
+date: 2024-09-08
+---
+
+
+## 一、概念
+
+Agentic Workflow是一种利用人工智能代理(AI Agents)来执行任务的智能自动化方法。它采用模块化设计,每个AI Agent负责特定的任务或功能,形成一个网络协作完成复杂任务。
+
+智能体网络: AI Agent形成网络,每个Agent拥有专长和责任,通过协作处理复杂任务
+
+自适应循环: AI Agent不断收集反馈,评估性能,根据反馈调整行为,确保工作流持续优化
+
+交互式界面: 支持自然语言交互和可视化操作,提高用户体验和系统可访问性
+
+数据和知识管理: 强大的数据和知识管理系统支持AI Agent的学习和决策
+
+安全性和隐私保护: 内置加密、访问控制等机制保护敏感信息
+
+## 二、框架
+Agentic Workflow的主流框架：
+| 框架     | 发布日期    |发布地址|start数| 技术优势                                                                                   |
+|----------|-----------|-----------|-----------|-------------------------------------------------------------------------------------------|
+| [Dify](https://github.com/langgenius/dify)| 2023年3月 |-----------|44.4k|-模块化设计，支持多种AI插件- 具备实时性能监控工具- 提供直观的用户界面和工作流编辑器- 支持自托管和云部署 |
+| [Flowise](https://github.com/flowiseai/flowise)| 2023年5月 | -----------|18.9k|- 用户友好的可视化工作流设计- 支持多种模型集成- 强大的社区支持和文档               |
+| [FastGPT](https://github.com/lm-sys/FastChat)  | 2023年8月 |-----------|16.1k| - 高效的性能优化- 支持快速部署和扩展- 适合大规模应用开发                           |
+| [AutoGen](https://github.com/autogpt/autogpt) | 2023年6月 | -----------|13.3k|- 自动化代码生成和测试- 提高开发效率，降低人工干预- 适合快速原型开发和迭代           |
+| [LangGraph](https://github.com/LangGenius/LangGraph)| 2023年7月 |-----------|1.2k|- 以图形化方式管理复杂的工作流- 支持多种数据源和API集成- 适合数据驱动的应用开发     |
+|[DB-GPT](https://github.com/pandastrike/db-gpt)   | 2023年9月 | -----------|1.1k|- 针对数据库操作的优化- 提供智能查询和数据分析功能- 适合数据密集型应用               |
+| [ComfyUI](https://github.com/comfyanonymous/ComfyUI) | 2023年4月 | -----------|3.2k|- 直观的用户界面设计- 适合非技术用户使用- 提供多种自定义选项和模板                   |
+| [WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)    | 2023年5月 | -----------|35.9k|- 专注于Web应用的开发- 提供丰富的组件库和模板- 适合快速开发和部署                   |
+| [Coze](https://github.com/coze-ai/coze)    | 2023年6月 | -----------|1.3k|- 轻量级框架，适合小型项目- 提供基本的工作流管理功能- 易于学习和使用                 |
+
+## 三、项目演示
+安装WebUI: 按照官方文档的说明安装和运行WebUI。
+
+启用自动化脚本: 在启动WebUI时添加--allow-code参数,开启自定义脚本功能。
+
+编写自动化脚本: 在WebUI的"Scripts"选项卡下的"Custom script"输入框中编写Python代码,实现自动化任务。
+
+访问WebUI参数: 在脚本中使用p变量获取WebUI的输入参数,如提示词、种子等。
+
+执行自动化操作: 利用Python库如Selenium等,编写代码模拟用户操作Web页面,完成自动化任务。
+
+输出结果: 使用display(images, seed, info)函数将生成的图像、种子和信息输出到WebUI。
+## 四、代码演示
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+# 启动Selenium浏览器
+driver = webdriver.Chrome()
+
+# 访问目标网页
+driver.get("https://www.example.com")
+
+# 获取WebUI输入参数
+prompt = p.prompt
+seed = p.seed
+
+# 在搜索框中输入提示词
+search_box = driver.find_element_by_name("q")
+search_box.send_keys(prompt)
+search_box.send_keys(Keys.RETURN)
+
+# 获取搜索结果
+results = driver.find_elements_by_css_selector(".result")
+
+# 处理搜索结果
+for result in results:
+    # 在这里编写处理搜索结果的代码
+    pass
+
+# 输出结果
+display(images, seed, info)
+```
+
+## 五、总结
+    >在WebUI中可以设置一系列Web任务,然后通过Python脚本去执行这些任务,并将结果反馈给WebUI。  
+
+  >WebUI根据任务执行的结果,决定是否继续执行下一个任务,形成一个自动化的工作流。
+
+2024.9.8
